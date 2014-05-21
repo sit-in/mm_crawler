@@ -29,14 +29,14 @@ if __name__ == '__main__':
       limit = ''
     else:
       limit = int(limit)
-      page = (limit/400)+1
+      page = (limit/400)+1  #计算每页图片在460左右，为保证解析的url大于用户指定的，取400
       if page > max_page:
         page = max_page
 
     if not otherdir:
       otherdir = 'pics'
 
-    print "我们使用了：%d" % page
+    print "我们将解析：%d 页的图片URL链接。。。" % page
     mm = Mm(page)
 
     mainprocess(website=mm,num=num,limit=limit,newdir=otherdir)

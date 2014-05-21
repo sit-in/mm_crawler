@@ -11,10 +11,10 @@ except ImportError:
     print "please install it!('sudo pip install BeautifulSoup4')"
     sys.exit()
 
-one_page = 35
-# max_page = 97
 
 def max_page():
+
+    one_page = 35
 
     url = 'http://www.22mm.cc/mm/top/rec.html'
 
@@ -28,12 +28,10 @@ def max_page():
         if s.find('span'):
             span = s.find('span')
             break
-    print span.text
     group = []
     for i in span.text:
         group.append(i)
     group = int(''.join(group[1:5]))
-    print group
     max_page = group/one_page+1
 
     return max_page
