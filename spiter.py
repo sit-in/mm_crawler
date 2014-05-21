@@ -19,8 +19,9 @@ if __name__ == '__main__':
     (options, args) = parser.parse_args()
     num,limit,otherdir = options.num,options.limit,options.otherdir
 
-    maxpage = max_page()
-
+    max_page = max_page()
+    page = max_page
+    
     if not num:
       num = 10
     else:
