@@ -5,6 +5,10 @@ import threading
 import string
 import urllib
 import os
+import time
+
+import socket
+socket.setdefaulttimeout(30) #设置全局socket超时,解决urllib.urlretrieve下载超时问题
 
 from mm.mm import Mm
 
@@ -26,11 +30,12 @@ class ThreadUrl(threading.Thread):
     def run(self):
         while True:
             try:
-                url = self.queue.get()
+                url = self.queue.get(1,5)
                 list_url = self.site.img_url(url)
                 img_urls.extend(list_url)
             except:
-                pass
+                print "%s: %s finished!" % (time.ctime(),self.getName())
+                break
             self.queue.task_done()
 
 def mainprocess(website=mm,num=10,limit=None,newdir='pics'):

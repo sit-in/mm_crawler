@@ -21,11 +21,12 @@ if __name__ == '__main__':
 
     max_page = max_page()
     page = max_page
-    
+
     if not num:
       num = 10
     else:
       num = int(num)
+
     if not limit:
       limit = ''
     else:
